@@ -30,6 +30,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>BouncyCastle.Crypto.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -1152,6 +1158,9 @@
     <Compile Include="x509\X509V2AttributeCertificateGenerator.cs" />
     <Compile Include="x509\X509V2CRLGenerator.cs" />
     <Compile Include="x509\X509V3CertificateGenerator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BouncyCastle.Crypto.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

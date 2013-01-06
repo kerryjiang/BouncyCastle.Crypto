@@ -45,6 +45,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>BouncyCastle.Crypto.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
     <Reference Include="system" />
@@ -1168,6 +1174,9 @@
     <Compile Include="x509\X509V2AttributeCertificateGenerator.cs" />
     <Compile Include="x509\X509V2CRLGenerator.cs" />
     <Compile Include="x509\X509V3CertificateGenerator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BouncyCastle.Crypto.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions>
