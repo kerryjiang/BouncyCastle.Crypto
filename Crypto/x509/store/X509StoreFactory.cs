@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Globalization;
+using Org.BouncyCastle.Utilities;
 
 namespace Org.BouncyCastle.X509.Store
 {

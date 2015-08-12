@@ -19,7 +19,7 @@ namespace Org.BouncyCastle.Asn1.Utilities
 			Asn1Object obj;
 			while ((obj = bIn.ReadObject()) != null)
             {
-                Console.WriteLine(Asn1Dump.DumpAsString(obj));
+                System.Diagnostics.Debug.WriteLine(Asn1Dump.DumpAsString(obj));
             }
 
 			bIn.Close();

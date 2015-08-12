@@ -45,7 +45,7 @@ namespace Org.BouncyCastle.Cms
 	*          ArrayList       certList = new ArrayList(certs.GetMatches(signer.SignerID));
 	*          X509Certificate cert = (X509Certificate) certList[0];
 	*
-	*          Console.WriteLine("verify returns: " + signer.Verify(cert));
+	*          System.Diagnostics.Debug.WriteLine("verify returns: " + signer.Verify(cert));
 	*      }
 	* </pre>
 	*  Note also: this class does not introduce buffering - if you are processing large files you should create

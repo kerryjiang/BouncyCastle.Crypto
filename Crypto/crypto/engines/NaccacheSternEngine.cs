@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-
+using System.Diagnostics;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Math;
 using Org.BouncyCastle.Utilities;
@@ -51,7 +51,7 @@ namespace Org.BouncyCastle.Crypto.Engines
 			{
 				if (debug)
 				{
-					Console.WriteLine("Constructing lookup Array");
+                    System.Diagnostics.Debug.WriteLine("Constructing lookup Array");
 				}
 				NaccacheSternPrivateKeyParameters priv = (NaccacheSternPrivateKeyParameters)key;
 				IList primes = priv.SmallPrimesList;
@@ -66,7 +66,7 @@ namespace Org.BouncyCastle.Crypto.Engines
 
 					if (debug)
 					{
-						Console.WriteLine("Constructing lookup ArrayList for " + actualPrimeValue);
+                        System.Diagnostics.Debug.WriteLine("Constructing lookup ArrayList for " + actualPrimeValue);
 					}
 
 					BigInteger accJ = BigInteger.Zero;
@@ -158,7 +158,7 @@ namespace Org.BouncyCastle.Crypto.Engines
 
 			if (debug)
 			{
-				Console.WriteLine("input as BigInteger: " + input);
+				System.Diagnostics.Debug.WriteLine("input as BigInteger: " + input);
 			}
 
 			byte[] output;
@@ -180,7 +180,7 @@ namespace Org.BouncyCastle.Crypto.Engines
 					{
 						if (debug)
 						{
-							Console.WriteLine("Prime is " + primes[i] + ", lookup table has size " + al.Count);
+                            System.Diagnostics.Debug.WriteLine("Prime is " + primes[i] + ", lookup table has size " + al.Count);
 						}
 						throw new InvalidCipherTextException("Error in lookup Array for "
 										+ ((BigInteger)primes[i]).IntValue
@@ -194,14 +194,14 @@ namespace Org.BouncyCastle.Crypto.Engines
 					{
 						if (debug)
 						{
-							Console.WriteLine("Actual prime is " + primes[i]);
-							Console.WriteLine("Decrypted value is " + exp);
+							System.Diagnostics.Debug.WriteLine("Actual prime is " + primes[i]);
+							System.Diagnostics.Debug.WriteLine("Decrypted value is " + exp);
 
-							Console.WriteLine("LookupList for " + primes[i] + " with size " + lookup[i].Count
+							System.Diagnostics.Debug.WriteLine("LookupList for " + primes[i] + " with size " + lookup[i].Count
 											+ " is: ");
 							for (int j = 0; j < lookup[i].Count; j++)
 							{
-								Console.WriteLine(lookup[i][j]);
+								System.Diagnostics.Debug.WriteLine(lookup[i][j]);
 							}
 						}
 						throw new InvalidCipherTextException("Lookup failed");
@@ -219,13 +219,13 @@ namespace Org.BouncyCastle.Crypto.Engines
 				// breach. So we can just work with the correct sigma.
 
 				// if (debug) {
-				//      Console.WriteLine("Decryption is " + test);
+				//      System.Diagnostics.Debug.WriteLine("Decryption is " + test);
 				// }
 				// if ((key.G.ModPow(test, key.Modulus)).Equals(input)) {
 				//      output = test.ToByteArray();
 				// } else {
 				//      if(debug){
-				//          Console.WriteLine("Engine seems to be used as an oracle,
+				//          System.Diagnostics.Debug.WriteLine("Engine seems to be used as an oracle,
 				//          returning null");
 				//      }
 				//      output = null;
@@ -258,7 +258,7 @@ namespace Org.BouncyCastle.Crypto.Engines
 			Array.Copy(tmp, 0, output, output.Length - tmp.Length, tmp.Length);
 			if (debug)
 			{
-				Console.WriteLine("Encrypted value is:  " + new BigInteger(output));
+				System.Diagnostics.Debug.WriteLine("Encrypted value is:  " + new BigInteger(output));
 			}
 			return output;
 		}
@@ -302,11 +302,12 @@ namespace Org.BouncyCastle.Crypto.Engines
 			BigInteger m2Crypt = new BigInteger(1, block2);
 			BigInteger m1m2Crypt = m1Crypt.Multiply(m2Crypt);
 			m1m2Crypt = m1m2Crypt.Mod(key.Modulus);
+
 			if (debug)
 			{
-				Console.WriteLine("c(m1) as BigInteger:....... " + m1Crypt);
-				Console.WriteLine("c(m2) as BigInteger:....... " + m2Crypt);
-				Console.WriteLine("c(m1)*c(m2)%n = c(m1+m2)%n: " + m1m2Crypt);
+                System.Diagnostics.Debug.WriteLine("c(m1) as BigInteger:....... " + m1Crypt);
+                System.Diagnostics.Debug.WriteLine("c(m2) as BigInteger:....... " + m2Crypt);
+                System.Diagnostics.Debug.WriteLine("c(m1)*c(m2)%n = c(m1+m2)%n: " + m1m2Crypt);
 			}
 
 			//byte[] output = key.Modulus.ToByteArray();
@@ -334,7 +335,7 @@ namespace Org.BouncyCastle.Crypto.Engines
 		{
 			if (debug)
 			{
-				Console.WriteLine();
+				System.Diagnostics.Debug.WriteLine();
 			}
 			if (data.Length > GetInputBlockSize())
 			{
@@ -342,9 +343,9 @@ namespace Org.BouncyCastle.Crypto.Engines
 				int outBlocksize = GetOutputBlockSize();
 				if (debug)
 				{
-					Console.WriteLine("Input blocksize is:  " + inBlocksize + " bytes");
-					Console.WriteLine("Output blocksize is: " + outBlocksize + " bytes");
-					Console.WriteLine("Data has length:.... " + data.Length + " bytes");
+					System.Diagnostics.Debug.WriteLine("Input blocksize is:  " + inBlocksize + " bytes");
+					System.Diagnostics.Debug.WriteLine("Output blocksize is: " + outBlocksize + " bytes");
+					System.Diagnostics.Debug.WriteLine("Data has length:.... " + data.Length + " bytes");
 				}
 				int datapos = 0;
 				int retpos = 0;
@@ -364,7 +365,7 @@ namespace Org.BouncyCastle.Crypto.Engines
 					}
 					if (debug)
 					{
-						Console.WriteLine("new datapos is " + datapos);
+						System.Diagnostics.Debug.WriteLine("new datapos is " + datapos);
 					}
 					if (tmp != null)
 					{
@@ -375,7 +376,7 @@ namespace Org.BouncyCastle.Crypto.Engines
 					{
 						if (debug)
 						{
-							Console.WriteLine("cipher returned null");
+							System.Diagnostics.Debug.WriteLine("cipher returned null");
 						}
 						throw new InvalidCipherTextException("cipher returned null");
 					}
@@ -384,7 +385,7 @@ namespace Org.BouncyCastle.Crypto.Engines
 				Array.Copy(retval, 0, ret, 0, retpos);
 				if (debug)
 				{
-					Console.WriteLine("returning " + ret.Length + " bytes");
+					System.Diagnostics.Debug.WriteLine("returning " + ret.Length + " bytes");
 				}
 				return ret;
 			}
@@ -392,7 +393,7 @@ namespace Org.BouncyCastle.Crypto.Engines
 			{
 				if (debug)
 				{
-					Console.WriteLine("data size is less then input block size, processing directly");
+					System.Diagnostics.Debug.WriteLine("data size is less then input block size, processing directly");
 				}
 				return ProcessBlock(data, 0, data.Length);
 			}

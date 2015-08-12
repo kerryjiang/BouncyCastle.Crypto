@@ -302,7 +302,7 @@ namespace Org.BouncyCastle.Crypto.Digests
 		{
 			_buffer[_bufferPos] = input;
 
-			//Console.WriteLine("adding to buffer = "+_buffer[_bufferPos]);
+			//System.Diagnostics.Debug.WriteLine("adding to buffer = "+_buffer[_bufferPos]);
 
 			++_bufferPos;
 

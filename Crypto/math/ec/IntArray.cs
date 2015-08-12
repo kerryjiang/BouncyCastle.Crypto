@@ -260,7 +260,7 @@ namespace Org.BouncyCastle.Math.EC
 			if (newMinUsedLen > m_ints.Length)
 			{
 				m_ints = resizedInts(newMinUsedLen);
-				//Console.WriteLine("Resize required");
+				//System.Diagnostics.Debug.WriteLine("Resize required");
 			}
 
 			for (int i = 0; i < usedLenOther; i++)
